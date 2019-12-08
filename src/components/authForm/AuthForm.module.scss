@@ -1,0 +1,55 @@
+$inputs-width-laptop: 300px;
+$inputs-width-mobile: 230px;
+
+.container {
+  margin: 60px auto;
+}
+.headerContainer {
+  position: relative;
+  top: 5px;
+  background-color: #417690;
+  padding: 15px;
+  border-radius: 5px 5px 0px 0px;
+  box-shadow: 0px 0px 1px -1px rgba(0,0,0,0.2), -1px 0px 1px 0px rgba(0,0,0,0.14), 1px 0px 3px 0px rgba(0,0,0,0.12);
+  h2 {
+    margin: 0px;
+    color:#f5dd5d;
+  }
+}
+.labelContainer {
+  width: $inputs-width-laptop;
+  display: flex;
+  margin: 0 auto;
+}
+.form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+.textFieldsContainer {
+  margin-top: 15px;
+  .textFields {
+    width: $inputs-width-laptop;
+  }
+}
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 767px) {
+  .textFieldsContainer {
+    margin-top: 15px;
+    .textFields {
+      width: $inputs-width-mobile;
+    }
+  }
+  .container {
+    margin: 40px auto;
+  }
+}
+@media only screen and (max-width: 410px) {
+  .buttons {
+    font-size: 8px !important;
+  }
+}

@@ -4,11 +4,11 @@ import * as actions from '../../actions/';
 
 class Goods extends Component {
   state = {
-
+    
   }
   componentDidMount() {
     this.showState()
-    fetch('/nutritions/')
+    fetch('nutritions/')
       .then(res=>res.json())
       .then((item)=>{console.log(item)})
       .catch((err)=>{console.log(err)});
@@ -17,11 +17,15 @@ class Goods extends Component {
     await this.props.onAuth()
     await console.log({loading: this.props.loading})
   }
+  setActive = (item,index) => {
+    console.log(item)
+    this.setState({ active: item, activeIndex: index })
+  }
   render() {
     return (
-      <div>
-        
-      </div>
+     <React.Fragment>
+
+     </React.Fragment>
     );
   }
 }
