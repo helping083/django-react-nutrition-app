@@ -1,0 +1,105 @@
+$large-width: 1220px;
+$card-description-font-weight: 600;
+@mixin perfect-center() {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.homePage {
+  .sliderHolder {
+    margin: 0 auto;
+    margin-top: 30px;
+    border: 1px solid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .sliderSection {
+      flex: 0 0 50%;
+      min-width: 200px;
+      min-height: 80px;
+      border: 1px solid yellowgreen;
+    }
+    .bannersSection {
+      flex: 0 0 25%;
+      min-width: 200px;
+      border: 1px solid yellow
+    }
+    .bannersItem {
+      border-radius: 4px;
+    }
+  }
+  .contentHolder {
+    margin-top: 25px;
+    border: 1px solid red;
+    background-color: #f5f5f5;
+    .storeDescription {
+      text-align: center;
+      font-size: 36px;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-weight: 700;
+      line-height: 1;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+    }
+  
+  }
+  .cardHolder {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: $large-width;
+    margin: 0 auto;
+  
+  }
+  .cardItem {
+    @include perfect-center();
+    flex: 1 0 25%;
+    min-width: 200px;
+  }
+  .labelIcon {
+    transform: rotate(210deg);
+    vertical-align: middle;
+  }
+  .cardDescription {
+    display: inline-block;
+    font-family: 'Roboto,Arial,Helvetica Neue,Helvetica,sans-serif';
+    position: relative;
+    top: 5px;
+    left: 10px;
+    font-size: 18px;
+    font-weight: $card-description-font-weight;
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
+@media (max-width: 1000px) {
+  .homePage {
+    .sliderHolder {
+      flex-direction: column;
+      flex-wrap: nowrap;
+      .sliderSection {
+        flex: 1 0 100%;
+      }
+      .bannersSection {
+        flex: 1 0 100%
+      }
+    }
+    .cardHolder {
+      padding-right: 25px;
+      padding-left: 25px;
+    }
+    .cardItem {
+      flex: 1 0 50%;
+    }
+  }
+}
+@media (min-width:1280px) {
+  .homePage{
+    .sliderHolder{
+      width: 1220px;
+      .sliderSection {
+        width: 840px;
+      }
+    }
+  }
+}

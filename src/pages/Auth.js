@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import AuthForm from '../components/authForm/AuthForm';
+import { connect } from 'react-redux';
+import { authLogOut } from '../actions';
+import { bindActionCreators } from 'redux';
 
 class Auth extends Component {
   constructor(props) {
@@ -8,13 +11,16 @@ class Auth extends Component {
       createUser: false
     }
   }
-  
+  componentDidMount() {
+    this.props.authLogOut()
+  }
   toggleCreateUser = () => {
     this.setState(prevState=>({
       createUser: !prevState.createUser
     }))
   }
   render() {
+    
     return (
       <div>
         <p>auth Component works </p>
@@ -26,4 +32,7 @@ class Auth extends Component {
     )
   }
 }
-export default Auth;
+const mapDispatchToProps = dispatch => bindActionCreators(
+  {authLogOut},dispatch
+)
+export default connect(null, mapDispatchToProps)(Auth);

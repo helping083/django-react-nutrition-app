@@ -1,3 +1,5 @@
 export {
-  authStart
+  authStart,
+  auth,
+  authLogOut
 } from './authActions';

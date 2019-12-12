@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import stylesName from './AuthForm.module.scss';
 import { useFormik } from 'formik';
 import Grid from '@material-ui/core/Grid';
@@ -9,6 +9,8 @@ import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import { connect } from 'react-redux';
 import * as Yup from "yup";
+import { auth } from '../../actions';
+import { bindActionCreators } from 'redux';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,14 +35,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SignupForm = (props) => {
-  // Notice that we have to initialize ALL of fields with values. These
-  // could come frtsRestTypeom props, but since we don't want to prefill this form,
-  // we just use an empty string. If you don't do this, React will yell
-  // at you.
+  /* toggle state create a user or log in */
   const switchForm =  () => {
    props.toggleUser()
    formik.setFieldValue('createUser', props.createUser);
   }
+  //form state
   const formik = useFormik({
     initialValues: {
       username: '',
@@ -65,6 +65,7 @@ const SignupForm = (props) => {
       try {
         console.log(formik)
         alert(JSON.stringify(values, null, 2));
+        props.auth(JSON.stringify(values))
       } catch (error) {
         console.log(error); 
       } 
@@ -118,6 +119,7 @@ const SignupForm = (props) => {
                   error={formik.touched.password && formik.errors.password ? true :false}
                 />
               </Box>
+              {/* show/hide email field depending creating a user or log in*/}
               {props.createUser ?
                 <Box className={stylesName.textFieldsContainer}>
                   <TextField
@@ -165,4 +167,8 @@ const mapStateToProps = state => {
     loading: state.auth.loading
   }
 }
-export default connect (mapStateToProps,null)(SignupForm);
+const mapDispatchToProps = dispatch => bindActionCreators(
+  {auth},dispatch
+)
+
+export default connect (mapStateToProps,mapDispatchToProps)(SignupForm);

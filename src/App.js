@@ -3,18 +3,21 @@ import './App.css';
 import Goods from '../src/components/goods/Goods';
 import Layout from '../src/HOC/Layout/Layout';
 import Routes from './Navigation/Routes/Routes';
+import { connect } from 'react-redux';
 
-function App() {
+function App(props) {
   return (
     <Layout>
       <div className="App">
         <Goods/>
-        <div>
-            {<Routes/>}
-        </div>
+        <Routes isAuth={props.isSignUp}/>
       </div>
     </Layout>
   );
 }
-
-export default App;
+const mapStateToProps = state => {
+  return {
+    isSignUp: state.auth.isSignUp
+  }
+}
+export default connect(mapStateToProps, null)(App);

@@ -6,7 +6,8 @@ const initialState = {
   error: null,
   loading: false,
   isSignUp: false,
-  authRedirectPath: '/'
+  authRedirectPath: '/',
+  todos: []
 };
 
 const reducer = ( state = initialState, action ) => {
@@ -18,10 +19,25 @@ const reducer = ( state = initialState, action ) => {
         loading: action.loading
       }
     case actionTypes.AUTH_SUCCESS:
-        
       return {
         ...state,
         loading: action.loading
+      }
+    case actionTypes.AUTH_FAIL:
+      return {
+        ...state,
+        loading: action.loading,
+        error: action.error
+      }
+    case actionTypes.AUTH_LOGOUT:
+      return {
+        ...state,
+        isSignUp: action.isSignUp
+      }
+    case actionTypes.AUTH_LOG_IN:
+      return {
+        ...state,
+        isSignUp: action.isSignUp
       }
     default: 
       return state;

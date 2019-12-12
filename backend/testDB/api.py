@@ -30,6 +30,6 @@ class LoginView(APIView):
         
         if user:
             token, created = Token.objects.get_or_create(user=user)
-            return Response({"token": token.key})
+            return Response({"token": token.key,"expirationDate": 1000})
         else:
             return Response({"error": "Wrong Credentials"}, status=status.HTTP_400_BAD_REQUEST)

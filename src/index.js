@@ -7,6 +7,8 @@ import App from './App';
 import 'normalize.css';
 import * as serviceWorker from './serviceWorker';
 import store from './store/configStore';
+import 'normalize.css';
+
 const app = (
   <Provider store={store}>
     <BrowserRouter>

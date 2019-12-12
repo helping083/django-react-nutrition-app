@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Auxiliary from '../Auxiliary/Auxiliary';
 import AppBar from '../../Navigation/AppBar';
 class Layout extends Component {
@@ -26,9 +25,5 @@ class Layout extends Component {
     );
   }
 }
-
-Layout.propTypes = {
-
-};
 
 export default Layout;

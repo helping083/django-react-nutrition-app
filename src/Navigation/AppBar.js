@@ -9,7 +9,8 @@ import Hidden from '@material-ui/core/Hidden';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -30,14 +31,8 @@ const useStyles = makeStyles(theme => ({
 const Link1 = React.forwardRef((props, ref) => (
   <RouterLink innerRef={ref}  {...props} activeClassName={styles.active}/>
 ));
-const Cards = React.forwardRef((props, ref) => (
-  <RouterLink innerRef={ref}  {...props} activeClassName={styles.active}/>
-));
-const linkHome = React.forwardRef((props, ref) => (
-  <RouterLink innerRef={ref}  {...props} activeClassName={styles.active} exact/>
-));
 
-export default function AppBars(props) {
+const AppBars = (props) => {
   const classes = useStyles();
   return (
     <div className={[classes.root].join(' ')}>
@@ -58,7 +53,11 @@ export default function AppBars(props) {
           <Hidden smDown>
             <Typography variant="h6" className={classes.title}>
               <nav>
-               <Link component={Link1} to="/auth" className={classes.link}>auth</Link>   
+               <Link component={Link1} to="/auth" className={classes.link}>auth</Link>
+               { props.isSignUp ?
+                 <Link component={Link1} to="/logout" className={classes.link}>logout</Link>
+                 :null
+              }   
               </nav>
             </Typography>
           </Hidden>
@@ -66,3 +65,13 @@ export default function AppBars(props) {
     </div>
   )
 }
+AppBars.propTypes = {
+  to: PropTypes.string,
+  isSignUp: PropTypes.bool
+}
+const mapStateToProps = state=> {
+  return {
+    isSignUp: state.auth.isSignUp
+  }
+}
+export default connect(mapStateToProps,null)(AppBars);

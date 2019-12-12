@@ -1,6 +1,7 @@
 import * as actiontypes from '../store/actionTypes';
 const localStorageMiddleware = store => next=> action => {
-  let { AUTH_START, AUTH_SUCCESS } = actiontypes;
+  let { AUTH_SUCCESS, AUTH_LOGOUT } = actiontypes;
+
   if (action.type === AUTH_SUCCESS) {
     console.log('hello', action);
     let locS = localStorage.getItem('token');
@@ -12,6 +13,11 @@ const localStorageMiddleware = store => next=> action => {
         .then((item)=>{console.log(localStorage.getItem('token'))})
         .catch((err)=>{console.log(err)});
     }
+  }
+
+  if (action.type === AUTH_LOGOUT) {
+    localStorage.removeItem('token');
+    localStorage.removeItem('expirationDate');
   }
   return next(action);
 }
