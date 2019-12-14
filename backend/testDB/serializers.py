@@ -3,6 +3,12 @@ from .models import Nutrition, UserProfile
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 import pdb
+
+class UserSomeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields = ('username', 'id', 'email')
+
 class NutritionSerializer(serializers.ModelSerializer):
   class Meta:
     model = Nutrition

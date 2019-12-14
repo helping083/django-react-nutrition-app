@@ -19,9 +19,11 @@ from django.conf.urls.static import static
 from django.urls import path, include, re_path
 from django.conf.urls import url
 from .views import index
+from testDB.api import JustView, InitHome
 
 urlpatterns = [
-    
     path('admin/', admin.site.urls),
     path('nutritions/', include('testDB.urls')),
+    path('init/', InitHome.as_view(), name='init'), 
+    path('', JustView.as_view(), name="Users" )
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

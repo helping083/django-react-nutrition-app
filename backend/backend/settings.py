@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic', 
     'django.contrib.staticfiles',
     'testDB',
+    'company',
+    'goods',
     'corsheaders',
     'pygments',
     'rest_framework',

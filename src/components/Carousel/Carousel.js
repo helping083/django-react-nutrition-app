@@ -22,15 +22,15 @@ class Carousel extends Component {
       autoplaySpeed: 5000,
       className: 'slides',
       afterChange: async (i) => {
-        let reveals = [...this.state.reveals];
-        reveals[i] = true;
-        if (i === 0) {
-          reveals[reveals.length-1] = false;
-        } else {
-          reveals[i-1] = false;
-        }
+        let reveals = await [...this.state.reveals].map((item,index) => {
+          if (index === i) {
+            return item = true;
+          } else {
+            return item = false;
+          }
+        });
         await this.setState({reveals});
-        await console.log('reeals', this.state.reveals);
+        //await console.log('reeals', this.state.reveals);
       }
     }
     return (

@@ -1,5 +1,7 @@
 $large-width: 1220px;
 $card-description-font-weight: 600;
+$label-color: #3f51b5;
+
 @mixin perfect-center() {
    display: flex;
    justify-content: center;
@@ -50,15 +52,6 @@ $card-description-font-weight: 600;
     margin: 0 auto;
   
   }
-  .cardItem {
-    @include perfect-center();
-    flex: 1 0 25%;
-    min-width: 200px;
-  }
-  .labelIcon {
-    transform: rotate(210deg);
-    vertical-align: middle;
-  }
   .cardDescription {
     display: inline-block;
     font-family: 'Roboto,Arial,Helvetica Neue,Helvetica,sans-serif';
@@ -71,6 +64,24 @@ $card-description-font-weight: 600;
       text-transform: uppercase;
     }
   }
+  .cardItem {
+    @include perfect-center();
+    flex: 1 0 25%;
+    min-width: 200px;
+  }
+  .cardContent {
+    @include perfect-center()
+  }
+  .labelIcon {
+    transform: rotate(210deg);
+    vertical-align: middle;
+  }
+  .textLabel {
+    color: $label-color;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
 }
 @media (max-width: 1000px) {
   .homePage {

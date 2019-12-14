@@ -1,17 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Banner = (props) => {
+function Card(props) {
   return (
     <div>
-      <img src="" alt=""/>
+      
     </div>
   )
 }
 
-Banner.propTypes = {
-  
+Card.propTypes = {
+
 }
 
-export default Banner
+export default Card
 
