@@ -24,6 +24,7 @@ from testDB.api import JustView, InitHome
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('nutritions/', include('testDB.urls')),
+    path('orders/', include('orders.urls')),
     path('init/', InitHome.as_view(), name='init'), 
     path('', JustView.as_view(), name="Users" )
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

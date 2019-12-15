@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'testDB',
     'company',
     'goods',
+    'orders',
     'corsheaders',
     'pygments',
     'rest_framework',
