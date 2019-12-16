@@ -8,13 +8,8 @@ class Goods extends Component {
     
   }
   componentDidMount() {
-    console.log('historggggy', this.props.history)
-    this.props.history.push('/');
     this.showState()
-    fetch('nutritions/')
-      .then(res=>res.json())
-      .then((item)=>{console.log(item)})
-      .catch((err)=>{console.log(err)});
+    this.props.onGetNutritions()
   }
   showState = async() => {
     await this.props.onAuth()
@@ -39,7 +34,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    onAuth: () => dispatch(actions.authStart())
+    onAuth: () => dispatch(actions.authStart()),
+    onGetNutritions: () => dispatch(actions.getNutritions())
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Goods));

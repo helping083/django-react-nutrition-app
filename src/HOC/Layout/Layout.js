@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Auxiliary from '../Auxiliary/Auxiliary';
 import AppBar from '../../Navigation/AppBar';
+import Goods from '../../components/goods/Goods';
 class Layout extends Component {
   constructor(props) {
     super(props)
@@ -18,6 +19,7 @@ class Layout extends Component {
     return (
       <Auxiliary>
         <AppBar/>
+        <Goods/>
         <main>
           {this.props.children}
         </main> 

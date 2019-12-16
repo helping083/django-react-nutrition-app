@@ -23,3 +23,17 @@ export const getOrdersHistory = (userID) => {
       })
   }
 }
+export const getNutritions = () => {
+  return dispatch => {
+    axios({
+      method: 'GET',
+      url: 'nutritions/'
+    })
+     .then((item) => {
+      console.log(item)
+     })
+     .catch((error) => {
+      console.log(error);
+     })
+  }
+}

@@ -5,5 +5,6 @@ export {
   setUserID
 } from './authActions';
 export {
-  getOrdersHistory
+  getOrdersHistory,
+  getNutritions
 } from './userActions';

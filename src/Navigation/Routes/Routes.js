@@ -9,10 +9,10 @@ const Routes = (props) => {
   return (
     <React.Fragment>
       <Switch>
+        {props.isAuth ? <Route path="/orders/usersList/:uuid" component={Cart}/>: null}
         <Route path="/auth" component={AuthPage}/>
         {props.isAuth ? <Route path="/logout" component={Logout}/>:null}
-        {props.isAuth ? <Route path="/orders/usersList/:uuid" component={Cart}/>: null}
-        <Route path="/" component={Home} exact/>
+        <Route path="/" exact component={Home}/>
         <Redirect to='/'/>
       </Switch>
     </React.Fragment>
