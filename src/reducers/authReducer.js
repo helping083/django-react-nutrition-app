@@ -39,6 +39,11 @@ const reducer = ( state = initialState, action ) => {
         ...state,
         isSignUp: action.isSignUp
       }
+    case actionTypes.SET_USER_ID:
+      return {
+        ...state,
+        userId: action.userId
+      }
     default: 
       return state;
   }

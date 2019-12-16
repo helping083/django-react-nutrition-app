@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/';
+import { withRouter } from 'react-router-dom';
 
 class Goods extends Component {
   state = {
     
   }
   componentDidMount() {
+    console.log('historggggy', this.props.history)
+    this.props.history.push('/');
     this.showState()
     fetch('nutritions/')
       .then(res=>res.json())
@@ -39,4 +42,4 @@ const mapDispatchToProps = dispatch => {
     onAuth: () => dispatch(actions.authStart())
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Goods);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Goods));

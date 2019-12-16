@@ -1,4 +1,5 @@
 import * as actiontypes from '../store/actionTypes';
+import { setUserID } from '../actions/';
 const localStorageMiddleware = store => next=> action => {
   let { AUTH_SUCCESS, AUTH_LOGOUT } = actiontypes;
 
@@ -18,6 +19,7 @@ const localStorageMiddleware = store => next=> action => {
   if (action.type === AUTH_LOGOUT) {
     localStorage.removeItem('token');
     localStorage.removeItem('expirationDate');
+    store.dispatch(setUserID(null));
   }
   return next(action);
 }

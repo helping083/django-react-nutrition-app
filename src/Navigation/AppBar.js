@@ -34,6 +34,7 @@ const Link1 = React.forwardRef((props, ref) => (
 
 const AppBars = (props) => {
   const classes = useStyles();
+  let uuidRoute = `cart${props.uuid}`
   return (
     <div className={[classes.root].join(' ')}>
         <AppBar position="static" className ={[styles.appBars].join(' ')}>
@@ -53,11 +54,17 @@ const AppBars = (props) => {
           <Hidden smDown>
             <Typography variant="h6" className={classes.title}>
               <nav>
+               <Link component={Link1} to="/" className={classes.link}>home</Link>
                <Link component={Link1} to="/auth" className={classes.link}>auth</Link>
                { props.isSignUp ?
                  <Link component={Link1} to="/logout" className={classes.link}>logout</Link>
                  :null
-              }   
+               }
+               {
+                 props.isSignUp ? 
+                 <Link component={Link1} to={`/orders/usersList/${props.uuid}`} className={classes.link}>cart</Link>
+                 :null
+               }   
               </nav>
             </Typography>
           </Hidden>
@@ -71,7 +78,8 @@ AppBars.propTypes = {
 }
 const mapStateToProps = state=> {
   return {
-    isSignUp: state.auth.isSignUp
+    isSignUp: state.auth.isSignUp,
+    uuid: state.auth.userId
   }
 }
 export default connect(mapStateToProps,null)(AppBars);

@@ -1,8 +1,10 @@
 from rest_framework import status, viewsets
 from rest_framework.response import Response
-from rest_framework.generics import CreateAPIView, ListAPIView
-from .serializers import OrderItemSerializer
+from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView
+from .serializers import OrderItemSerializer, UserOrdersSerializer
+from testDB.models import UserProfile
 from .models import OrderItem
+
 class OrderViewApi(CreateAPIView):
   queryset = OrderItem.objects.all()
   serializer_class = OrderItemSerializer
@@ -16,3 +18,11 @@ class OrderViewApi(CreateAPIView):
 class ListOrdersViewApi(ListAPIView):
   queryset = OrderItem.objects.all()
   serializer_class = OrderItemSerializer
+
+class UserOrdersViewApi(ListAPIView):
+  queryset = UserProfile.objects.all()
+  serializer_class = UserOrdersSerializer
+
+class UserInstanceViewApi(RetrieveAPIView):
+  queryset = UserProfile.objects.all()
+  serializer_class = UserOrdersSerializer

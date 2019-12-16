@@ -1,5 +1,9 @@
 export {
   authStart,
   auth,
-  authLogOut
+  authLogOut,
+  setUserID
 } from './authActions';
+export {
+  getOrdersHistory
+} from './userActions';
